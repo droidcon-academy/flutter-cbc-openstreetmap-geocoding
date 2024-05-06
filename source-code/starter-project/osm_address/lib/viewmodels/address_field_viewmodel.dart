@@ -6,6 +6,8 @@ class AddressFieldViewModel extends BaseViewModel{
 
   late BuildContext context;
 
+  String title = "OSM AddressAutoComplete";
+
   final displayAddressController = TextEditingController();
   final displayAddressNode = FocusNode();
 
