@@ -38,7 +38,7 @@ class _AddressFieldState extends State<AddressField> {
                           focusNode: viewModel.displayAddressNode,
                           onFieldSubmitted: viewModel.dismissKeyboard(),
                           validator: (value) => viewModel.validateAddress(value!),
-                          onChanged: (value) => setState(() {}),
+                          onChanged: (value) => (),
                           onTap: () {},
                           decoration: const InputDecoration(
                             labelText: "Enter a valid address",
@@ -52,7 +52,7 @@ class _AddressFieldState extends State<AddressField> {
                           focusNode: viewModel.houseAdressNode,
                           onFieldSubmitted: viewModel.dismissKeyboard(),
                           validator: (value) => viewModel.validateAddress(value!),
-                          onChanged: (value) => setState(() {}),
+                          onChanged: (value) => (),
                           onTap: () {},
                           decoration: const InputDecoration(
                             labelText: "House Address",
@@ -66,7 +66,7 @@ class _AddressFieldState extends State<AddressField> {
                           focusNode: viewModel.stateNode,
                           onFieldSubmitted: viewModel.dismissKeyboard(),
                           validator: (value) => viewModel.validateAddress(value!),
-                          onChanged: (value) => setState(() {}),
+                          onChanged: (value) => (),
                           onTap: () {},
                           decoration: const InputDecoration(
                             labelText: "State",
@@ -80,7 +80,7 @@ class _AddressFieldState extends State<AddressField> {
                           focusNode: viewModel.countryNode,
                           onFieldSubmitted: viewModel.dismissKeyboard(),
                           validator: (value) => viewModel.validateAddress(value!),
-                          onChanged: (value) => setState(() {}),
+                          onChanged: (value) => (),
                           onTap: () {},
                           decoration: const InputDecoration(
                             labelText: "Country",
