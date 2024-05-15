@@ -49,9 +49,6 @@ class _AddressFieldState extends State<AddressField> {
                           keyboardType: TextInputType.multiline,
                           controller: viewModel.houseAdressController,
                           focusNode: viewModel.houseAdressNode,
-                          validator: (value) => viewModel.validateAddress(value!),
-                          onChanged: (value) => (),
-                          onTap: () {},
                           decoration: const InputDecoration(
                             labelText: "House Address",
                             border: UnderlineInputBorder(),
@@ -62,9 +59,6 @@ class _AddressFieldState extends State<AddressField> {
                           keyboardType: TextInputType.multiline,
                           controller: viewModel.stateController,
                           focusNode: viewModel.stateNode,
-                          validator: (value) => viewModel.validateAddress(value!),
-                          onChanged: (value) => (),
-                          onTap: () {},
                           decoration: const InputDecoration(
                             labelText: "State",
                             border: UnderlineInputBorder(),
@@ -75,9 +69,6 @@ class _AddressFieldState extends State<AddressField> {
                           keyboardType: TextInputType.multiline,
                           controller: viewModel.countryController,
                           focusNode: viewModel.countryNode,
-                          validator: (value) => viewModel.validateAddress(value!),
-                          onChanged: (value) => (),
-                          onTap: () {},
                           decoration: const InputDecoration(
                             labelText: "Country",
                             border: UnderlineInputBorder(),
