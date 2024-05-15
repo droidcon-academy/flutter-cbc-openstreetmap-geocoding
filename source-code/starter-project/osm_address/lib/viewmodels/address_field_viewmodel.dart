@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:osm_address/viewmodels/base_view_model.dart';
 
 class AddressFieldViewModel extends BaseViewModel{
@@ -27,11 +26,6 @@ class AddressFieldViewModel extends BaseViewModel{
       return "Address cannot be empty";
     }
     return null;
-  }
-
-   dismissKeyboard() {
-    SystemChannels.textInput.invokeMethod('TextInput.hide');
-    FocusManager.instance.primaryFocus?.unfocus();
   }
 
 }
