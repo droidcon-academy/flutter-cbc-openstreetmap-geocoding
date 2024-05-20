@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:osm_address/models/address_info.dart';
+import 'package:osm_address/osm_plugin.dart';
 import 'package:osm_address/services/openstreetmap_service.dart';
 import 'package:osm_address/viewmodels/address_field_viewmodel.dart';
 import 'package:stacked/stacked.dart';
@@ -98,7 +99,19 @@ class _AddressFieldState extends State<AddressField> {
                           ),
                         ),
                       ],
-                    ))
+                    )),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, 
+                        MaterialPageRoute(builder: (context) => const AddressSearchWidget()));
+                      }, 
+                      style: OutlinedButton.styleFrom(
+                          elevation: 1.0,
+                          backgroundColor: Colors.blueAccent,
+                           ),
+                      child: const Text("OSM Plugin",
+                      style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w600),)
+                      )
                   ],
                 ),
               ),

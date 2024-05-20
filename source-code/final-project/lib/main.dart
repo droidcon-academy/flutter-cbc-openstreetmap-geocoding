@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const AddressField(),
-      //home: const AddressSearchWidget(), //uncomment to display address search using osm plugin
     );
   }
 }
