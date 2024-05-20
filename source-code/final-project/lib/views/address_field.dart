@@ -76,6 +76,41 @@ class _AddressFieldState extends State<AddressField> {
                         ),
                         const SizedBox(
                           height: 16,
+                        ),  TextFormField(
+                          keyboardType: TextInputType.multiline,
+                          controller:  _places.isNotEmpty ? _places[0].countyController : TextEditingController(),
+                          focusNode: viewModel.countyNode,
+                          decoration: const InputDecoration(
+                            labelText: "County",
+                            border: UnderlineInputBorder(),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        TextFormField(
+                          keyboardType: TextInputType.multiline,
+                          controller:  _places.isNotEmpty ? _places[0].cityController : TextEditingController(),
+                          focusNode: viewModel.cityNode,
+                          decoration: const InputDecoration(
+                            labelText: "City",
+                            border: UnderlineInputBorder(),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        TextFormField(
+                          keyboardType: TextInputType.multiline,
+                          controller: _places.isNotEmpty ? _places[0].postalCodeController : TextEditingController(),
+                          focusNode: viewModel.postalCodeNode,
+                          decoration: const InputDecoration(
+                            labelText: "Postal code",
+                            border: UnderlineInputBorder(),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 16,
                         ),
                         TextFormField(
                           keyboardType: TextInputType.multiline,
@@ -170,6 +205,9 @@ class _AddressFieldState extends State<AddressField> {
                   onTap: () {
                     final addressInfo = AddressInfo(
                         houseAddress: place.houseAddress,
+                        county: place.county,
+                        city: place.city,
+                        postalCode: place.postalCode,
                         state: place.state,
                         country: place.country,
                         displayName: place.displayName);
@@ -195,11 +233,18 @@ void _handleSelectedPlace(BuildContext context, AddressInfo addressInfo) {
   viewModel.displayAddressController.text = addressInfo.displayName;
   setState(() {
     viewModel.displayAddressController.text = addressInfo.displayName;
+    viewModel.houseAdressController.text = addressInfo.houseAddress;
+    viewModel.countyController.text = addressInfo.county;
+    viewModel.cityController.text = addressInfo.city;
+    viewModel.postalCodeController.text = addressInfo.postalCode;
     viewModel.stateController.text = addressInfo.state;
     viewModel.countryController.text = addressInfo.country;
 
     if(_places.isNotEmpty){
         _places[0].houseAddressController.text = addressInfo.houseAddress;
+        _places[0].countyController.text = addressInfo.county;
+        _places[0].cityController.text = addressInfo.city;
+        _places[0].postalCodeController.text = addressInfo.postalCode;
         _places[0].stateController.text = addressInfo.state;
         _places[0].countryController.text = addressInfo.state;
       }

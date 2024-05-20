@@ -34,8 +34,9 @@ class OpenStreetMapService {
         return AddressInfo(
             houseAddress: houseAddress,
             state: addressInfo['state'] ?? '',
-            //county: addressInfo['county'] ?? '',
-            //city: addressInfo['city'] ?? '',
+            county: addressInfo['county'] ?? '',
+            city: addressInfo['city'] ?? '',
+            postalCode: addressInfo['postcode'] ?? '',
             country: addressInfo['country'] ?? '',
             displayName: place['display_name'] ?? '');
       }).toList();

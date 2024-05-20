@@ -12,7 +12,16 @@ class AddressFieldViewModel extends BaseViewModel {
 
   final houseAdressController = TextEditingController();
   final houseAdressNode = FocusNode();
-  
+
+  final cityController = TextEditingController();
+  final cityNode = FocusNode();
+
+  final postalCodeController = TextEditingController();
+  final postalCodeNode = FocusNode();
+
+  final countyController = TextEditingController();
+  final countyNode = FocusNode();
+
   final stateController = TextEditingController();
   final stateNode = FocusNode();
 
