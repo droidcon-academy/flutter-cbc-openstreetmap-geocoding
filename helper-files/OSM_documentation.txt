@@ -1,0 +1,3 @@
+##Link to the OpenStreetMap documentation
+
+https://nominatim.org/release-docs/develop/api/Overview/
