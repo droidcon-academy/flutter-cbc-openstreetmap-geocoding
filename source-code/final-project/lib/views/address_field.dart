@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:osm_address/models/address_info.dart';
-import 'package:osm_address/osm_plugin.dart';
+import 'package:osm_address/views/osm_plugin.dart';
 import 'package:osm_address/services/openstreetmap_service.dart';
 import 'package:osm_address/viewmodels/address_field_viewmodel.dart';
 import 'package:stacked/stacked.dart';
@@ -14,7 +14,7 @@ class AddressField extends StatefulWidget {
 
 class _AddressFieldState extends State<AddressField> {
   late AddressFieldViewModel viewModel;
-  
+
   bool _showResults = false;
   List<AddressInfo> _places = [];
 
@@ -47,27 +47,26 @@ class _AddressFieldState extends State<AddressField> {
                           focusNode: viewModel.displayAddressNode,
                           validator: (value) =>
                               viewModel.validateAddress(value!),
-                          onChanged: (address) => 
-                            _onAddressSearch(address)
-                          ,
+                          onChanged: (address) => _onAddressSearch(address),
                           onTap: () {
-                             setState(() {
-                               _showResults = true;
-                             });
+                            setState(() {
+                              _showResults = true;
+                            });
                           },
                           decoration: const InputDecoration(
                             labelText: "Enter a valid address",
                             border: UnderlineInputBorder(),
                           ),
                         ),
-                        if (_showResults )
-                          _buildPlacesList(),
+                        if (_showResults) _buildPlacesList(),
                         const SizedBox(
                           height: 16,
                         ),
                         TextFormField(
                           keyboardType: TextInputType.multiline,
-                          controller:  _places.isNotEmpty ? _places[0].houseAddressController : TextEditingController(),
+                          controller: _places.isNotEmpty
+                              ? _places[0].houseAddressController
+                              : TextEditingController(),
                           focusNode: viewModel.houseAdressNode,
                           decoration: const InputDecoration(
                             labelText: "House Address",
@@ -76,9 +75,12 @@ class _AddressFieldState extends State<AddressField> {
                         ),
                         const SizedBox(
                           height: 16,
-                        ),  TextFormField(
+                        ),
+                        TextFormField(
                           keyboardType: TextInputType.multiline,
-                          controller:  _places.isNotEmpty ? _places[0].countyController : TextEditingController(),
+                          controller: _places.isNotEmpty
+                              ? _places[0].countyController
+                              : TextEditingController(),
                           focusNode: viewModel.countyNode,
                           decoration: const InputDecoration(
                             labelText: "County",
@@ -90,7 +92,9 @@ class _AddressFieldState extends State<AddressField> {
                         ),
                         TextFormField(
                           keyboardType: TextInputType.multiline,
-                          controller:  _places.isNotEmpty ? _places[0].cityController : TextEditingController(),
+                          controller: _places.isNotEmpty
+                              ? _places[0].cityController
+                              : TextEditingController(),
                           focusNode: viewModel.cityNode,
                           decoration: const InputDecoration(
                             labelText: "City",
@@ -102,7 +106,9 @@ class _AddressFieldState extends State<AddressField> {
                         ),
                         TextFormField(
                           keyboardType: TextInputType.multiline,
-                          controller: _places.isNotEmpty ? _places[0].postalCodeController : TextEditingController(),
+                          controller: _places.isNotEmpty
+                              ? _places[0].postalCodeController
+                              : TextEditingController(),
                           focusNode: viewModel.postalCodeNode,
                           decoration: const InputDecoration(
                             labelText: "Postal code",
@@ -114,7 +120,9 @@ class _AddressFieldState extends State<AddressField> {
                         ),
                         TextFormField(
                           keyboardType: TextInputType.multiline,
-                          controller:  _places.isNotEmpty ? _places[0].stateController : TextEditingController(),
+                          controller: _places.isNotEmpty
+                              ? _places[0].stateController
+                              : TextEditingController(),
                           focusNode: viewModel.stateNode,
                           decoration: const InputDecoration(
                             labelText: "State",
@@ -126,7 +134,9 @@ class _AddressFieldState extends State<AddressField> {
                         ),
                         TextFormField(
                           keyboardType: TextInputType.multiline,
-                          controller:  TextEditingController(text: _places.isNotEmpty ? _places[0].country : ""),
+                          controller: TextEditingController(
+                              text:
+                                  _places.isNotEmpty ? _places[0].country : ""),
                           focusNode: viewModel.countryNode,
                           decoration: const InputDecoration(
                             labelText: "Country",
@@ -135,19 +145,28 @@ class _AddressFieldState extends State<AddressField> {
                         ),
                       ],
                     )),
-                    const SizedBox(height: 16,),
+                    const SizedBox(
+                      height: 16,
+                    ),
                     ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(context, 
-                        MaterialPageRoute(builder: (context) => const AddressSearchWidget()));
-                      }, 
-                      style: OutlinedButton.styleFrom(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const AddressSearchWidget()));
+                        },
+                        style: OutlinedButton.styleFrom(
                           elevation: 1.0,
                           backgroundColor: Colors.blueAccent,
-                           ),
-                      child: const Text("OSM Plugin",
-                      style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w600),)
-                      )
+                        ),
+                        child: const Text(
+                          "OSM Plugin",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600),
+                        ))
                   ],
                 ),
               ),
@@ -162,9 +181,9 @@ class _AddressFieldState extends State<AddressField> {
         const countryCode = "us";
         final results =
             await OpenStreetMapService.searchByAddress(address, countryCode);
-          setState(() {
-            _places = results;
-          });
+        setState(() {
+          _places = results;
+        });
       } catch (e) {
         print(e.toString());
       }
@@ -187,7 +206,7 @@ class _AddressFieldState extends State<AddressField> {
             ),
             onTap: () {
               _places.clear();
-              setState(() {}); 
+              setState(() {});
             },
           ),
         ),
@@ -199,9 +218,9 @@ class _AddressFieldState extends State<AddressField> {
             return Column(
               children: [
                 ListTile(
-                  title: Text(place.displayName), 
+                  title: Text(place.displayName),
                   subtitle: Text(
-                      '${place.houseAddress}, ${place.state}, ${place.country}'), 
+                      '${place.houseAddress}, ${place.state}, ${place.country}'),
                   onTap: () {
                     final addressInfo = AddressInfo(
                         houseAddress: place.houseAddress,
@@ -212,15 +231,15 @@ class _AddressFieldState extends State<AddressField> {
                         country: place.country,
                         displayName: place.displayName);
 
-                        _handleSelectedPlace(context, addressInfo);
+                    _handleSelectedPlace(context, addressInfo);
                   },
                   dense: true,
                   contentPadding: EdgeInsets.zero,
                   minLeadingWidth: 0,
-                  leading: const SizedBox(), 
+                  leading: const SizedBox(),
                   minVerticalPadding: 0,
                 ),
-                const Divider(), 
+                const Divider(),
               ],
             );
           },
@@ -229,18 +248,18 @@ class _AddressFieldState extends State<AddressField> {
     );
   }
 
-void _handleSelectedPlace(BuildContext context, AddressInfo addressInfo) {	
-  viewModel.displayAddressController.text = addressInfo.displayName;
-  setState(() {
+  void _handleSelectedPlace(BuildContext context, AddressInfo addressInfo) {
     viewModel.displayAddressController.text = addressInfo.displayName;
-    viewModel.houseAdressController.text = addressInfo.houseAddress;
-    viewModel.countyController.text = addressInfo.county;
-    viewModel.cityController.text = addressInfo.city;
-    viewModel.postalCodeController.text = addressInfo.postalCode;
-    viewModel.stateController.text = addressInfo.state;
-    viewModel.countryController.text = addressInfo.country;
+    setState(() {
+      viewModel.displayAddressController.text = addressInfo.displayName;
+      viewModel.houseAdressController.text = addressInfo.houseAddress;
+      viewModel.countyController.text = addressInfo.county;
+      viewModel.cityController.text = addressInfo.city;
+      viewModel.postalCodeController.text = addressInfo.postalCode;
+      viewModel.stateController.text = addressInfo.state;
+      viewModel.countryController.text = addressInfo.country;
 
-    if(_places.isNotEmpty){
+      if (_places.isNotEmpty) {
         _places[0].houseAddressController.text = addressInfo.houseAddress;
         _places[0].countyController.text = addressInfo.county;
         _places[0].cityController.text = addressInfo.city;
@@ -249,6 +268,6 @@ void _handleSelectedPlace(BuildContext context, AddressInfo addressInfo) {
         _places[0].countryController.text = addressInfo.state;
       }
       _showResults = false;
-  });
-}
+    });
+  }
 }

@@ -18,27 +18,26 @@ class _AddressSearchWidgetState extends State<AddressSearchWidget> {
       appBar: AppBar(
         title: const Text("OSM plugin"),
       ),
-      body: SafeArea(child: SingleChildScrollView(
-        child: Padding(
-          padding:
-                    const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-          child: Column(
-            children: [
-              TextField(
-                controller: _searchController,
-                onChanged: _onSearchTextChanged,
-                decoration: const InputDecoration(
-                  hintText: 'Enter address...',
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+            child: Column(
+              children: [
+                TextField(
+                  controller: _searchController,
+                  onChanged: _onSearchTextChanged,
+                  decoration: const InputDecoration(
+                    hintText: 'Enter address...',
+                  ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              _buildSuggestionsList(),
-            ],
+                const SizedBox(height: 10),
+                _buildSuggestionsList(),
+              ],
+            ),
           ),
         ),
       ),
-    ),
-     
     );
   }
 
@@ -97,9 +96,9 @@ class _AddressSearchWidgetState extends State<AddressSearchWidget> {
   }
 
   Future<List<SearchInfo>> getAddressSuggestions(String query) async {
-  // Call the addressSuggestion function from the flutter_osm_plugin package
-  List<SearchInfo> suggestions = await addressSuggestion(query);
-  // Return the list of suggestions
-  return suggestions;
-}
+    // Call the addressSuggestion function from the flutter_osm_plugin package
+    List<SearchInfo> suggestions = await addressSuggestion(query);
+    // Return the list of suggestions
+    return suggestions;
+  }
 }
