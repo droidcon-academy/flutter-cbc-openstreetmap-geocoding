@@ -1,3 +1,7 @@
-//baseURL
+//OpenStreetMap baseURL
 
  baseUrl = "https://nominatim.openstreetmap.org";
+
+//constructed url
+
+'$baseUrl/search?format=json&q=$address&countrycodes=$countryCode&addressdetails=1&limit=5&namedetails=1&extratags=1'
