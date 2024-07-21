@@ -1,0 +1,3 @@
+final url = '$baseUrl/search?format=json&q=$address&countrycodes=$countryCode&addressdetails=1&limit=10&namedetails=1&extratags=1';
+
+ final response = await Dio().get(url);
