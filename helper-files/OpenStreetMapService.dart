@@ -10,3 +10,9 @@ final houseAddressValues = [
   addressInfo['road'],
   addressInfo['place'],
 ];
+
+return AddressInfo(
+    houseAddress: houseAddress,
+    state: addressInfo['state'] ?? '',
+    country: addressInfo['country'] ?? '',
+    displayName: place['display_name'] ?? '');
