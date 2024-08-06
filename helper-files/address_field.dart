@@ -69,3 +69,21 @@ Widget _buildPlacesList() {
       ],
     );
   }
+
+//handleSelectedPlace() method
+  void _handleSelectedPlace(BuildContext context, AddressInfo addressInfo) {
+    viewModel.displayAddressController.text = addressInfo.displayName;
+    setState(() {
+      viewModel.displayAddressController.text = addressInfo.displayName;
+      viewModel.houseAdressController.text = addressInfo.houseAddress;
+      viewModel.stateController.text = addressInfo.state;
+      viewModel.countryController.text = addressInfo.country;
+
+      if (_places.isNotEmpty) {
+        _places[0].houseAddressController.text = addressInfo.houseAddress;
+        _places[0].stateController.text = addressInfo.state;
+        _places[0].countryController.text = addressInfo.country;
+      }
+      _showResults = false;
+    });
+  }
