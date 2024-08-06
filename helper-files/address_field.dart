@@ -1,3 +1,16 @@
+//houseAddressController
+controller: _places.isNotEmpty
+                              ? _places[0].houseAddressController
+                              : TextEditingController(),
+
+//stateController
+controller: _places.isNotEmpty
+                              ? _places[0].stateController
+                              : TextEditingController(),
+
+//countryController
+controller: TextEditingController(
+                              text:_places.isNotEmpty ? _places[0].country : ""),
 
 // onAddressSearch() method
 Future<List<AddressInfo>> _onAddressSearch(String address) async {
