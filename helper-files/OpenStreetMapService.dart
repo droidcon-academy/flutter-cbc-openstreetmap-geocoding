@@ -11,6 +11,8 @@ final houseAddressValues = [
   addressInfo['place'],
 ];
 
+final houseAddress = houseAddressValues.where((value) => value != null).join(',');
+
 return AddressInfo(
     houseAddress: houseAddress,
     state: addressInfo['state'] ?? '',
